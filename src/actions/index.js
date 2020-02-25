@@ -1,13 +1,13 @@
 import jsonPlaceHolder from '../apis/jsonPlaceholder';
 
 //Action creator
-export const fetchPosts = async () => {
-    // Bad aproch!!!!, breaking rules of action creator, not returning a plain js object BECAUSE ASYNC/AWAIT    
-    //Returned a request object lol not an action
-    const response = await jsonPlaceHolder.get('/posts');
+//A function in ES6 THAT RETURNS A FUNCTION
+//With redux think action creators:
+//Can return action objects or can return functions! and r-t automatically call those functions for us
+//Redux thunk will call the function sending it to dispatch but will wait for the request
+//After getting the request completed manually calls the dispatch!! KEY, with a plain js new object!
+export const fetchPosts = () => async dispatch => {
+        const response = await jsonPlaceHolder.get('/posts');
 
-    return {
-        type: 'FETCH_POSTS',
-        payload: response
-    }
-}
+        dispatch({type: 'FETCH_POSTS', payload: response});
+    };
