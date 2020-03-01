@@ -1,0 +1,27 @@
+0)Quando inicia a aplicação com redux cada reducer vai ser chamado na inicialização.
+1)Não pode retornar undefined.
+
+2)Produz state ou data para o app usando somente o state anterior e a action.
+2.1) Inicialmente ele recebe 'undefined' e Action #1 para produzir o state 1.
+2.2)Na segunda rodada o primeiro argumento não será undefined e sim o retorno anterior daquele reducer.
+2.2.1)2nd time(statev1,action#);
+
+3)O reducer não pode depender de algo externo a si para dedicir o que retornar(PURE REDUCERS).
+3.1)Api request is bad on a reducer!! or a input value.
+
+4)Não mutar o argumento de state!
+4.1)Por exemplo não mutar o conteúdo de um array, adicionar ou remover.
+4.2)Mudar valores de propriedades de objetos, adicionar, etc.
+4.3) DONT state[0] = abc; never STATE = SOMETHING
+4.4) Strings and numbers are imutables 
+
+
+==========More stuff ===============         
+
+Triple === checks if its the exact same array in memory for exemple not its content
+ex)
+
+const numbers = [1,2,3]
+
+numbers === [1,2,3]//false
+
