@@ -8,6 +8,11 @@ import jsonPlaceHolder from '../apis/jsonPlaceholder';
 //After getting the request completed manually calls the dispatch!! KEY, with a plain js new object!
 export const fetchPosts = () => async dispatch => {
         const response = await jsonPlaceHolder.get('/posts');
+        dispatch({type: 'FETCH_POSTS', payload: response.data });
+};
 
-        dispatch({type: 'FETCH_POSTS', payload: response});
-    };
+export const fetchUser = id => async dispatch => {
+    const responese = await jsonPlaceHolder.get(`/users/${id}`);
+    dispatch({ type: 'FETCH_USER', payload: responese.data });
+}
+
