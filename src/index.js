@@ -4,10 +4,14 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
+//My stuff
 import App from './components/App';
 import reducers from './reducers';
 
-//Wire the middleware
+//Store                        
+//Holding all state(data)
+//You can only pass one reducer
+//You are applying a Middleware called thunk
 const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(

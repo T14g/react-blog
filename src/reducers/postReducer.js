@@ -1,6 +1,5 @@
-//Single file separated reducer
 //You not alloweed to return undefined 
-//Always have to not return undefined from reducer!! so the last return
+//The last return ensures you're not returning undefined
 export default (state = [], action) => {
     switch(action.type) {
         case 'FETCH_POSTS':

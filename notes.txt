@@ -1,0 +1,7 @@
+As it turns out, the Redux store only takes one reducer. 
+In fact, a reducer is the first and only argument that createStore 
+requires to create a store. A lot of folks seem to miss this at
+first because they see that we usually end up writing many reducers 
+to handle various parts of our state. But we can only pass Redux a
+single reducer when calling createStore() to set up our store.
+The reducer we pass to the store is often called the "root reducer."
