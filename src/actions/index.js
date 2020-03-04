@@ -6,9 +6,20 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) =>{
     await dispatch(fetchPosts());
 
     //lodash map version to get unique userId's
-    const userIds = _.uniq(_.map(getState().posts, 'userId'));
-    userIds.forEach(id => dispatch(fetchUser(id)));
+    //old
+    // const userIds = _.uniq(_.map(getState().posts, 'userId'));
+    // userIds.forEach(id => dispatch(fetchUser(id)));
 
+    //Chain on aditional functions
+    //(getState().posts will be provided as 1st argument to map function
+    //so we only need to provide 2nd,3rd,etc argument
+    _.chain(getState().posts)
+        ._map('userId')//results from here goes to function bellow
+        ._uniq()
+        ._forEach(id => dispatch(fetchUser(id)))
+        .value()//execute all steps 
+
+ 
 }
 
 //Action creator
