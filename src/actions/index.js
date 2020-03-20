@@ -7,9 +7,9 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) =>{
 
     //Chain give the return of n function to n+1 function and so on
     _.chain(getState().posts)
-        ._map('userId')//results from here goes to function bellow
-        ._uniq()
-        ._forEach(id => dispatch(fetchUser(id)))
+        .map('userId')//results from here goes to function bellow
+        .uniq()
+        .forEach(id => dispatch(fetchUser(id)))
         .value()//execute all steps 
 }
 
